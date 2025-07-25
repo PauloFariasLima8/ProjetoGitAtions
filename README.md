@@ -161,7 +161,7 @@ exemplo: fulanodetal99/ProjetoGitActions
 depois clique em salva.
 
 
-## Instalando os Programas
+## Etapa 3. Instalando os Programas
 Rancher Desktop
 Para Windows: Clique no linque a seguir baixe o instalador para Windows e prossiga com a instalação.
 URL: https://rancherdesktop.io/
@@ -243,3 +243,16 @@ git config --global user.email "seu@email.com"
 Esses comandos configuram seu nome e e-mail, que serão usados em todos os commits feitos a partir deste computador. Para verificar se as configurações foram aplicadas corretamente, execute:
 
 git config --global --list
+
+## Etapa 4. Configurando ARGOCID. 
+1. Passo: Acessar o ArgoCID via Browser. Digite  comando abaixo no seu terminal: 
+
+````Bash 
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+````
+2. Passo: Acessando Via Navegador
+Digite: localhost:8080
+Vai abrir a pagina inicial do Argo. Digite seu usuario e senha.
+3. Passo: Em Applications clique em New App
+![](img/image3.png)
+4. Passo: Configurações.
