@@ -256,3 +256,19 @@ Vai abrir a pagina inicial do Argo. Digite seu usuario e senha.
 3. Passo: Em Applications clique em New App
 ![](img/image3.png)
 4. Passo: Configurações.
+Nome: projeto-github-actions
+Project: default  Syic: Automatic
+![](img/image4.png)
+Reository: https://github.com/PauloFariasLima8/ProjetoGitAtions.git  Path: manifests  Cluster: in-cluster 
+Namespace: default
+![](img/image5.png)
+se errar alguma configuração, depois que aplicação for montada, clique sobre a aplicação>DIFF. Escolha a aparte que quer editar, no caso aqui, foi Nomespace que estava errado: 
+![](img/image6.png)
+Depois clique em salva. Se tudo estiver correto aplicação está sincronizando normal com o status de um coração verde em HEALTH.
+
+## Etapa 5. Execultando a Imagem no Kubernet
+1. passo: Abra o terminal e digite: 
+
+````Bash
+kubectl port-forward svc/hello-app 8080:8080
+````
