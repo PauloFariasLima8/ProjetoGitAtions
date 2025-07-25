@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: hello-app
-        image: <pauloafariaslima8>/hello-app:latest
+        image: pauloafariaslima8/hello-app:latest
         ports:
         - containerPort: 8000
