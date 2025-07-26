@@ -14,10 +14,12 @@ spec:
     spec:
       containers:
       - name: hello-app
-        image: paulofariaslima8/hello-app:latest
+        image: paulofariaslima8/hello-app:1.0  # TAG ESPECÍFICA
         ports:
         - containerPort: 8000
         resources:
           requests:
             cpu: "100m"
             memory: "128Mi"
+      imagePullSecrets:  # SE NECESSÁRIO
+      - name: dockerhub-secret
