@@ -10,7 +10,7 @@ Kubernetes local com Rancher Desktop.
 
 ## Índice
 1. [Pré-requisitos](#-pré-requisitos)
-2. [Etapa 1: Conta Github e Aplicação FastAPI](#-etapa-1-aplicação-fastapi)
+2. [Etapa 2. Criação de Conta DockerHub geração de Token Docker Hub]
 3. [Etapa 2: GitHub Actions](#-etapa-2-github-actions)
 4. [Etapa 3: Manifestos Kubernetes](#-etapa-3-manifestos-kubernetes)
 5. [Etapa 4: Configuração do ArgoCD](#-etapa-4-configuração-do-argocd)
@@ -113,9 +113,15 @@ spec:
     spec:
       containers:
       - name: hello-app
-        image: <SEU-USER>/hello-app:latest
+        image: paulofariaslima8/hello-app:1.0  # TAG ESPECÍFICA
         ports:
         - containerPort: 8000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+      imagePullSecrets:  # SE NECESSÁRIO
+      - name: dockerhub-secret
 ````
 Despois crie o arquivo service.yaml.
 
@@ -159,7 +165,23 @@ nome: coloque o user_name gerado no Token do DockerHub.
 secret: coloque o token gerado e na segunda linha o usuariogithub/pastas do repositorio do projeto.
 exemplo: fulanodetal99/ProjetoGitActions
 depois clique em salva.
+6. Passo: Copie os arquivos de manifests para sua pasta local e inicie a criação da imagem kubernet.
+Abra seu terminal de sua eescolha e digite:
+````bash
+docker build -t paulofariaslima8/hello-app:1.0 .
+````
+Depois da imagem criada faça o push para o DockerHub. Use o comando abaixo para logar via terminal no DockerHub e fazer o push.
+````Bash 
+echo “coloque seu token de acesso ao DckerHub aqui” | docker login -u pauloafariaslima8 --password-stdin
+````
+Depois der o comando para fazer o push: 
 
+````Bash
+ docker push paulofariaslima8/hello-app:1.0
+````
+Resultado esperado. 
+![](img/image12.png)
+Pronto! Sua imagem docker agora está no repositorio oficial do docker Hub. Endereço da imagem: https://hub.docker.com/repository/docker/paulofariaslima8/hello-app
 
 ## Etapa 3. Instalando os Programas
 Rancher Desktop
@@ -205,7 +227,6 @@ Passo: Criar o Repositório;
 Passo: Criar a pasta "Loja-Butique", no projeto foi sugerido K8s.
 Instalando o Git.
 Caso não tenha o Git instalado, siga o passo a passo abaixo.
-
 
 No Linux
 Abra o terminal.
@@ -273,3 +294,25 @@ Depois clique em salva. Se tudo estiver correto aplicação está sincronizando 
 ````Bash
 kubectl port-forward svc/hello-app 8081:8080
 ````
+Agora vá para o navegador e digite: localhost:8081
+![](img/image10.png)
+Como podemos ver o resultado esperado foi exibido, a mensagem de "Hello Word".
+2. Passo: Alterar a mensagem no arquivo main.py que está na pasta AppHello.
+Em: 
+````Bash 
+return {"message": "Hello World"}
+````
+Altere para:
+````Bash
+return {"message": "Texto Alterado"}
+````
+Salve a alteração feita e envie para o git.
+
+3. Passo: Ver a mensagem novamente no navegador.
+Feche o terminal no qual o app Hello-app estava aberto. Abra novamente o terminal e digite o comando: 
+````Bash
+kubectl port-forward svc/hello-app 8081:8080
+````
+Vá para o navegador e digite: localhost:8081
+![](img/image14.png)
+Resltado esperado recebido: Mensagem "Texto Alterado".
