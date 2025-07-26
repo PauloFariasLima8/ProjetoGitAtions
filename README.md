@@ -7,15 +7,40 @@ execução de uma aplicação FastAPI simples, usando GitHub Actions para
 CI/CD, Docker Hub como registry, e ArgoCD para entrega contínua em
 Kubernetes local com Rancher Desktop.
 
+# Índice do Projeto CI/CD com FastAPI
 
-## Índice
-1. [Pré-requisitos](#-pré-requisitos)
-2. [Etapa 2. Criação de Conta DockerHub geração de Token Docker Hub]
-3. [Etapa 2: GitHub Actions](#-etapa-2-github-actions)
-4. [Etapa 3: Manifestos Kubernetes](#-etapa-3-manifestos-kubernetes)
-5. [Etapa 4: Configuração do ArgoCD](#-etapa-4-configuração-do-argocd)
-6. [Etapa 5: Teste do Pipeline](#-etapa-5-teste-do-pipeline)
-7. [Entregas Esperadas](#-entregas-esperadas)
+## 1. Objetivo
+- [Visão Geral do Projeto](#-objetivo)
+
+## 2. Pré-requisitos
+- [Ferramentas Necessárias](#-pré-requisitos)
+- [Configurações Iniciais](#-pré-requisitos)
+
+## 3. Implementação
+### 3.1. Configuração Inicial
+- [Estrutura do Projeto](#-etapa-1-configuração-inicial)
+- [Arquivos Essenciais](#-etapa-1-configuração-inicial)
+
+### 3.2. Docker Hub
+- [Criação de Conta e Token](#-etapa-2-docker-hub)
+- [Build e Push de Imagens](#-etapa-2-docker-hub)
+
+### 3.3. Ferramentas
+- [Instalação do Rancher Desktop](#-etapa-3-instalação-de-ferramentas)
+- [Configuração do ArgoCD](#-etapa-3-instalação-de-ferramentas)
+- [Instalação do Git](#-etapa-3-instalação-de-ferramentas)
+
+## 4. Configuração do ArgoCD
+- [Primeiro Acesso](#-etapa-4-configuração-do-argocd)
+- [Criação de Aplicação](#-etapa-4-configuração-do-argocd)
+
+## 5. Testes
+- [Acesso à Aplicação](#-etapa-5-testes-e-validação)
+- [Validação do CI/CD](#-etapa-5-testes-e-validação)
+
+## 6. Entregas
+- [Resultados Esperados](#-entregas-esperadas)
+
 
 ---
 
