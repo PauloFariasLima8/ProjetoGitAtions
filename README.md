@@ -184,7 +184,8 @@ Resultado esperado.
 Pronto! Sua imagem docker agora está no repositorio oficial do docker Hub. Endereço da imagem: https://hub.docker.com/repository/docker/paulofariaslima8/hello-app
 
 ## Etapa 3. Instalando os Programas
-Rancher Desktop
+**Rancher Desktop**
+
 Para Windows: Clique no linque a seguir baixe o instalador para Windows e prossiga com a instalação.
 URL: https://rancherdesktop.io/
 
@@ -201,49 +202,68 @@ Paaso: Clique em Kubernet;
 Passo: habilite o Kubernet.
 Se tudo tiver ok com a instalação do Kubernet:
 
+```` Bash 
 kubectl get nodes
+````
 
-Digite o camando acima no terminal de sua preferencia, asaida deve ser algo semelhante a imagem abaixo.
+Digite o camando acima no terminal de sua preferencia.
 
+**ArgoCD**
 
-
-ArgoCD
 Para instalar o ArgoCD no cluster Kubernetes, execute os seguintes comandos no terminal:
+
+````
 kubectl apply -n argocd -f
  https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+ ````
 Após a instalação, exponha o serviço do ArgoCD para acesso externo:
+````
 kubectl port-forward svc/argocd-server -n argocd 8080:443
+````
+
 Acesse a interface web do ArgoCD em http://localhost:8080 e faça login com as credenciais padrão:
+
 Usuário: admin
+
 Senha: A senha pode ser obtida com o comando:
+````
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+````
+
 Depois de acessar o programa recomendasse mudar a senha em: 
 
 User Info > UPDATE Password.
 Conta no GitHub
 Com os arquivos yaml no github o ArgoCD vai fazer a sincronia e enviar qualquer alteração que seja feita para o Custle local da aplicação.
 
-Passo: Criar o Repositório;
-Passo: Criar a pasta "Loja-Butique", no projeto foi sugerido K8s.
-Instalando o Git.
+**Instalando o Git.**
+
 Caso não tenha o Git instalado, siga o passo a passo abaixo.
 
 No Linux
 Abra o terminal.
 Execute o comando abaixo conforme sua distribuição:
 Debian/Ubuntu:
-
+````
 sudo apt update
 sudo apt install git
+````
 Fedora:
-
+````
 sudo dnf install git
+````
 CentOS/RHEL:
 
+````
 sudo yum install git
+````
 Verifique a instalação:
+
+````
 git --version
-No Windows
+````
+**No Windows**
+
 Acesse o site oficial: https://git-scm.com/download/win
 
 Baixe o instalador e execute-o.
@@ -252,18 +272,24 @@ Siga as instruções do assistente de instalação.
 
 Após instalar, abra o Prompt de Comando e verifique:
 
+````
 git --version
+````
 Depois de instalado, abra o Git:
 
 
 
 No terminal que abril, digite os comandos abaixo para criar seu usurio local.
 
+````
 git config --global user.name "Seu Nome"
 git config --global user.email "seu@email.com"
+````
 Esses comandos configuram seu nome e e-mail, que serão usados em todos os commits feitos a partir deste computador. Para verificar se as configurações foram aplicadas corretamente, execute:
 
+````
 git config --global --list
+````
 
 ## Etapa 4. Configurando ARGOCID. 
 1. Passo: Acessar o ArgoCID via Browser. Digite  comando abaixo no seu terminal: 
