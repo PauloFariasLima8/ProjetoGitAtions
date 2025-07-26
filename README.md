@@ -264,11 +264,12 @@ Namespace: default
 ![](img/image5.png)
 se errar alguma configuração, depois que aplicação for montada, clique sobre a aplicação>DIFF. Escolha a aparte que quer editar, no caso aqui, foi Nomespace que estava errado: 
 ![](img/image6.png)
-Depois clique em salva. Se tudo estiver correto aplicação está sincronizando normal com o status de um coração verde em HEALTH.
+Depois clique em salva. Se tudo estiver correto aplicação está sincronizando normal com o status de um coração verde em HEALTH. Igual a Imagem abaixo.
+
 
 ## Etapa 5. Execultando a Imagem no Kubernet
 1. passo: Abra o terminal e digite: 
 
 ````Bash
-kubectl port-forward svc/hello-app 8080:8080
+kubectl port-forward svc/hello-app 8081:8080
 ````
